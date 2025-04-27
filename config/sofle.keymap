@@ -14,7 +14,6 @@
         // | SHIFT |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
         // | LCTRL |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |       |  N   |  M    |  ,    |  .   |   /   | SHIFT |
         //               | GUI | ALT  | CTRL |  SKY |  ENTER |  | SPACE |  GOD | CTRL  | ALT   | GUI  |
-
         Earth {
             bindings = <
                 &kp ESC     &kp N1  &kp N2     &kp N3    &kp N4    &kp N5                                 &kp N6  &kp N7     &kp N8           &kp N9    &kp N0    &kp BSPC
@@ -24,7 +23,9 @@
                 &kp LCTRL  &kp LALT  &kp LGUI  &mo 1   &mt LEFT_ALT SPACE    &kp RET  &mo 2   &kp K_APP  &rgb_ug RGB_TOG  &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&inc_dec_kp PG_UP PG_DN>;
         };
 
         //                                 IN PROGRESS
@@ -34,7 +35,6 @@
         // |    |    |    |    |    |    |      #      |    |    |    |    |    |    |
         // |    |    |    |    |    |    |    | # |    |    |    |    |    |    |    |
         //           |    |    |    |    |    | # |    |    |    |    |    |
-
         Sky {
             bindings = <
                 &kp GRAVE   &kp F1    &kp F2    &kp F3     &kp F4     &kp F5                  &kp F6    &kp F7     &kp F8         &kp F9            &kp F10           &kp DEL
@@ -44,7 +44,9 @@
                                       &none     &kp B      &none      &none   &none    &none  &none     &none      &none          &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&inc_dec_kp PG_UP PG_DN>;
         };
 
         //                                 IN PROGRESS
@@ -54,6 +56,7 @@
         // |    |    |    |    |    |    |      #      |    |    |    |    |    |    |
         // |    |    |    |    |    |    |    | # |    |    |    |    |    |    |    |
         //           |    |    |    |    |    | # |    |    |    |    |    |
+        God {
             bindings = <
                 &bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &out OUT_BLE  &out OUT_USB  &out OUT_TOG  &none      &none  &none
                 &none           &kp GRAVE     &none         &none         &none         &none                         &none         &none         &none         &none      &none  &none
@@ -62,7 +65,9 @@
                                               &none         &none         &none         &none         &none    &none  &none         &none         &none         &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
