@@ -4,5 +4,5 @@ include:
     shield: sofle_left nice_view_adapter nice_view
   - board: nice_nano_v2
     shield: sofle_right nice_view_adapter nice_view
-  - board: nrf52840dk_nrf52840
+  - board: nice_nano_v2
     shield: settings_reset
