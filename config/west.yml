@@ -1,11 +1,17 @@
 manifest:
   remotes:
+    # zmk official
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: dsifry # custom screen
+      url-base: https://github.com/dsifry # custom screen
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
+    - name: nice-view-mod # custom screen
+      remote: dsifry # custom screen
+      revision: main # custom screen
   self:
     path: config
