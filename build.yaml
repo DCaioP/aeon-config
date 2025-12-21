@@ -1,8 +1,8 @@
 ---
 include:
-  - board: nice_nano
+  - board: nrf52840_m2
     shield: sofle_left
-  - board: nice_nano
+  - board: nrf52840_m2
     shield: sofle_right
-  - board: nice_nano
+  - board: nrf52840_m2
     shield: settings_reset
