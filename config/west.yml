@@ -8,10 +8,10 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: e93cd31a5866cd4f50385bece7a3fb770f2ca6f8 # main em 2025-07-03 (Zephyr 3.5)
       import: app/west.yml
     - name: nice-view-mod # custom screen
       remote: dsifry # custom screen
-      revision: main # custom screen
+      revision: 5f328cce749b2760cb61dcac30db29432685af69 # custom screen
   self:
     path: config
