@@ -1,8 +1,8 @@
----
+# DIAGNOSTICO: mesma build da esquerda, mas com o clock de baixa
+# frequencia vindo do oscilador RC interno em vez do cristal 32.768 kHz.
+# Se esta boota e a normal nao, o cristal da nice!nano esta morto.
 include:
   - board: nice_nano_v2
     shield: sofle_left nice_view_adapter nice_view_custom
-  - board: nice_nano_v2
-    shield: sofle_right nice_view_adapter nice_view_custom
-  - board: nice_nano_v2
-    shield: settings_reset
+    cmake-args: -DCONFIG_CLOCK_CONTROL_NRF_K32SRC_RC=y -DCONFIG_CLOCK_CONTROL_NRF_K32SRC_XTAL=n
+    artifact-name: diag-rcclock-sofle_left
