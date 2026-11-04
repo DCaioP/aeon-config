@@ -1,8 +1,25 @@
----
+# Teclado MISTO: metade esquerda da Le + metade direita do Caio.
+#
+# Esquerda (central): PCB da Le, controlador SuperMini nRF52840 (alvo
+# nice_nano_v2), diodos montados girados -> precisa do overlay row2col.
+# Sem tela. Encoder e underglow como na config dela (general-config).
+#
+# Direita (peripheral): PCB do Caio, diodos normais (col2row do shield),
+# com nice!view. E o mesmo alvo da branch teclado-caio.
+#
+# As duas metades precisam do settings_reset antes, porque cada uma
+# guarda o endereco do par antigo.
 include:
   - board: nice_nano_v2
-    shield: sofle_left nice_view_adapter nice_view_custom
+    shield: sofle_left
+    cmake-args: >-
+      -DEXTRA_DTC_OVERLAY_FILE=$GITHUB_WORKSPACE/config/aeon_row2col_left.overlay
+      -DCONFIG_EC11=y
+      -DCONFIG_EC11_TRIGGER_GLOBAL_THREAD=y
+      -DCONFIG_ZMK_RGB_UNDERGLOW=y
+    artifact-name: misto-sofle_left-le
   - board: nice_nano_v2
     shield: sofle_right nice_view_adapter nice_view_custom
+    artifact-name: misto-sofle_right-caio
   - board: nice_nano_v2
     shield: settings_reset

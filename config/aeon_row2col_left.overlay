@@ -1,0 +1,39 @@
+/* CORRECAO DE HARDWARE - metade ESQUERDA.
+ *
+ * Os diodos desta montagem foram assentados girados 180 graus.
+ *
+ * O desenho da PCB (pcb/aeon-keyboard.kicad_pcb) e col2row: pad 1 do diodo
+ * (catodo) na linha, pad 2 (anodo) no switch -- que e justamente o default do
+ * shield sofle. As duas metades, porem, foram soldadas ao contrario, entao
+ * fisicamente a matriz e row2col. Sem este override NENHUMA tecla funciona.
+ *
+ * Diagnosticado em 2026-10-01; o racional completo esta no README, secao
+ * "Diodos invertidos: o diagnostico de 2026-10-01".
+ *
+ * A ordem das colunas aqui e a do sofle_left.overlay oficial e NAO pode ser
+ * trocada pela da direita, que e espelhada (ver aeon_row2col_right.overlay).
+ *
+ * Em relacao ao shield mudam tres coisas, e as tres sao necessarias:
+ *   1. diode-direction passa a "row2col";
+ *   2. as linhas viram saidas  -> perdem o GPIO_PULL_DOWN;
+ *   3. as colunas viram entradas -> ganham o GPIO_PULL_DOWN. Sem ele os pinos
+ *      ficam flutuando e o scan gera teclas fantasma.
+ */
+&kscan0 {
+    diode-direction = "row2col";
+    row-gpios
+        = <&pro_micro 5 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+        ;
+    col-gpios
+        = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
+};
